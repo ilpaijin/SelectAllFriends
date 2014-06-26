@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "SelectAllFriends",
+    "author":"ilpaijin@gmail.com",
+    "version": "0.1",
+    "description": "Select all your friends and send them your invite.",
+    "browser_action": {
+        "default_title":"Select all your Fb friends",
+        "default_icon": "./icon/friends.png"
+    },
+    "background": { "page": "invite.html" },
+    "permissions": [ "tabs", "http://*/*", "https://*/*" ],
+
+    "web_accessible_resources": [ "contentscript.js" ]
+}
