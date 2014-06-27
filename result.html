@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+</head>
+<body>
+    <script>
+        
+        chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
+            // I got the message, let's parse it
+            alert(msg);
+
+            // b. Act upon it, creating the tab etc
+            // chrome.tabs.create(<specs>, <callback>);
+            ...
+        });
+    </script>
+</body>
+</html>

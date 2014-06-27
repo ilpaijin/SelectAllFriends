@@ -1,3 +1,6 @@
 #SelectAllFriends
 
-###Select all your friends and send them your invite.
+##A Chrome Extension test.
+
+### Goal
+Select all your friends and send them your invite.
