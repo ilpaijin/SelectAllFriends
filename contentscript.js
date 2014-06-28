@@ -66,13 +66,30 @@
         this.spinner = obj.spinner;
 
         /**
+         * [options description]
+         * @type {Object}
+         */
+        this.options = {
+            removeDisabled: false,
+            checkableItemsClassname: 'checkableListItem',
+            checkableItemsClass: '.checkableListItem',
+            disabledItemsClassname: 'disabledCheckable'
+        }
+
+        /**
          * [having description]
          * @param  {[type]} options [description]
          * @return {[type]}         [description]
          */
         this.having = function(options)
         {
-            this.options = options;
+            for (var opt in options)
+            {
+                if(this.options.hasOwnProperty(opt))
+                {
+                    this.options[opt] = options[opt];
+                }
+            }
             
             return this;
         }
@@ -128,23 +145,35 @@
          */
         this.checkThemAll = function()
         {
-            for (var x = 0, list = this.dom.scrollable.querySelectorAll('.checkableListItem'); x < list.length; x++) 
+            if(this.options.removeDisabled)
             {
-                var classes = list[x].className;
-                
-                if(this.options.removeDisabled)
-                {
-                    if(classes.indexOf('disabledCheckable') > -1)
-                    {
-                        list[x].parentNode.removeChild(list[x]);
-                    }
-                }
+                this.removeDisabledFromDom();
+            }
 
-                if(classes.indexOf('checkableListItem') > -1 && classes.indexOf('disabledCheckable') == -1)
+            for (var x = 0, list = this.dom.scrollable.querySelectorAll(this.options.checkableItemsClass); x < list.length; x++) 
+            {
+                var className = list[x].className;
+
+                if(className.indexOf(this.options.checkableItemsClassname) > -1 && className.indexOf(this.options.disabledItemsClassname) == -1)
                 {
                     list[x].querySelectorAll('.checkbox')[0].click();  
                 }
             }   
+        };
+
+        /**
+         * [removeDisabledFromDom description]
+         * @return {[type]} [description]
+         */
+        this.removeDisabledFromDom = function()
+        {
+            for (var x = 0, list = this.dom.scrollable.querySelectorAll(this.options.checkableItemsClass); x < list.length; x++) 
+            {
+                if(list[x].className.indexOf(this.options.disabledItemsClassname) > -1)
+                {
+                    list[x].parentNode.removeChild(list[x]);
+                } 
+            } 
         };
 
         /**
@@ -171,7 +200,7 @@
     // ***** Run ***** //
     /////////////////////
     saf.having({
-        removeDisabled: false
+        removeDisabled: true
     }).run();
 
 })(window, document);
