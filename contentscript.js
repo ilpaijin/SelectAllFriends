@@ -145,7 +145,7 @@
          */
         this.checkThemAll = function()
         {
-            if(this.options.removeDisabled)
+            if(this.viewSelectedOnes()) // or if(this.options.removeDisabled)
             {
                 this.removeDisabledFromDom();
             }
@@ -160,6 +160,22 @@
                 }
             }   
         };
+
+        /**
+         * [viewSelectedOnes description]
+         * @return {[type]} [description]
+         */
+        this.viewSelectedOnes = function()
+        {
+            if(confirm("View only the selected ones?"))
+            {
+                return true;
+            } 
+            else 
+            {
+                return false;
+            }
+        }
 
         /**
          * [removeDisabledFromDom description]
