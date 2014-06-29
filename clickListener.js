@@ -2,7 +2,7 @@ chrome.browserAction.onClicked.addListener(function(tab)
 {
     var fat = chrome.tabs.executeScript(
         null, 
-        {file:"contentscript.js"}, 
+        {file:"coreScript.js"}, 
         function(a, b)
         {
             // var msg = {

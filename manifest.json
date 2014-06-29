@@ -1,15 +1,15 @@
 {
     "manifest_version": 2,
-    "name": "SelectAllFriends",
+    "name": "InviteFacebookFriends",
     "author":"ilpaijin@gmail.com",
     "version": "0.1",
-    "description": "Select all your friends and send them your invite.",
+    "description": "Select all your Facebook friends and send them your invite.",
     "browser_action": {
-        "default_title":"Select all your Fb friends",
-        "default_icon": "./icon/friends.png"
+        "default_title":"Invite all your Facebook friends",
+        "default_icon": "./icon/invite_friends.png"
     },
     "background": { "page": "invite.html" },
     "permissions": [ "tabs", "http://*/*", "https://*/*" ],
 
-    "web_accessible_resources": [ "contentscript.js" ]
+    "web_accessible_resources": [ "coreScript.js" ]
 }

@@ -145,6 +145,8 @@
          */
         this.checkThemAll = function()
         {
+            var counter = 0;
+
             if(this.viewSelectedOnes()) // or if(this.options.removeDisabled)
             {
                 this.removeDisabledFromDom();
@@ -157,8 +159,11 @@
                 if(className.indexOf(this.options.checkableItemsClassname) > -1 && className.indexOf(this.options.disabledItemsClassname) == -1)
                 {
                     list[x].querySelectorAll('.checkbox')[0].click();  
+                    counter++;
                 }
             }   
+
+            this.showFriendsCheckedNumber(counter);
         };
 
         /**
@@ -175,6 +180,27 @@
             {
                 return false;
             }
+        }
+
+        this.showFriendsCheckedNumber = function(qty)
+        {
+            var el = document.createElement("div");
+   
+            el.id = "safFriendsCounter";
+            el.style.background = "#444";
+            el.style.borderRadius = "6px";
+            el.style.height = "45px";
+            el.style.width = "180px";
+            el.style.position = "absolute";
+            el.style.top = "166px";
+            el.style.left = "200px";
+            el.style.color = "#fff";
+            el.style.textAlign = "center";
+            el.style.paddingTop = "20px";
+            el.style.fontWeight = "bold";
+            el.innerHTML = qty + " friend" + ((qty > 1) ? "s" : "") + " selected";
+
+            this.dom.wrapper.insertBefore(el, this.dom.wrapper.childNodes[0]);
         }
 
         /**
